@@ -47,3 +47,29 @@ export const typescriptComponentModule = angular.module('typescriptComponentModu
     .component('typescriptComponent', typescriptComponent);
 ```
 * The component is considered a "dumb" or presentation component. It has only Input properties and no internal logic.
+* 
+```TypeScript
+import {Person} from "../person";
+import IHttpService = angular.IHttpService;
+import IPromise = angular.IPromise;
+import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
+
+export class TypescriptService  {
+
+	constructor(private $http: IHttpService, private $q: angular.IQService) {
+	}
+
+	getPeople(): IPromise<Person[]> {
+		var deferred = this.$q.defer();
+		this.$http.get('./personresturl').then(response => {
+			deferred.resolve(response.data);
+		}, err => {
+			deferred.reject(err);
+		});
+		return deferred.promise;
+	}
+}
+
+export const typescriptServiceModule = angular.module('typeScriptService_module', [])
+	.service('typescriptService', TypescriptService);
+```
