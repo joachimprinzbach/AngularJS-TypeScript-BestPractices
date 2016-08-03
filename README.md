@@ -1,5 +1,9 @@
 # AngularJS-TypeScript-BestPractices
  Best practices for AngularJS Applications using Typescript.
+ 
+ ## Introduction 
+ Most examples found throughout the web that use AngularJS with TypeScript are not following common Software Engineering practices. 
+ These small snippets should show how an AngularJS 1.5 application can use TypeScript very easily and still stick to the ES6 standard. Typescript is only used for typings, no inheritance, interfaces and other boilerplate code is needed.
 
 ### App Definition Example
 
