@@ -114,3 +114,5 @@ class TypescriptController {
 export const typescriptControllerModule = angular.module('typescriptControllerModule', [])
     .controller('typescriptController', TypescriptController);
 ```
+* Controller is a smart component - can mutate state and fetch data via services. 
+* Initial logic is done in the new angular 1.5 onInit lifecycle hook method.
