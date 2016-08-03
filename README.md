@@ -46,3 +46,4 @@ class TypescriptComponentController {
 export const typescriptComponentModule = angular.module('typescriptComponentModule', [])
     .component('typescriptComponent', typescriptComponent);
 ```
+* The component is considered a "dumb" or presentation component. It has only Input properties and no internal logic.
