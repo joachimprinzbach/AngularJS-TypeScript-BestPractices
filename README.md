@@ -116,3 +116,16 @@ export const typescriptControllerModule = angular.module('typescriptControllerMo
 ```
 * Controller is a smart component - can mutate state and fetch data via services. 
 * Initial logic is done in the new angular 1.5 onInit lifecycle hook method.
+
+### Example partial snippet
+```HTML
+<script src="pathToAppBundle"></script>
+
+<div ng-app="typescript-app">
+	<h2>TypeScript Example</h2>
+	<div ng-controller="typescriptController as vm">
+		<h2>People Component:</h2>
+		<typescript-component people="vm.people" add-person="vm.addPerson()"></typescript-component>
+	</div>
+</div>
+```
