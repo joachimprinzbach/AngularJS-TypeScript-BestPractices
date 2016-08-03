@@ -48,6 +48,7 @@ export const typescriptComponentModule = angular.module('typescriptComponentModu
 ```
 * The component is considered a "dumb" or presentation component. It has only Input properties and no internal logic.
 
+### Data Service example - fetch data asynchronously via Rest Service
 
 ```TypeScript
 import {Person} from "../person";
