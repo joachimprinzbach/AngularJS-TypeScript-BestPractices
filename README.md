@@ -47,7 +47,8 @@ export const typescriptComponentModule = angular.module('typescriptComponentModu
     .component('typescriptComponent', typescriptComponent);
 ```
 * The component is considered a "dumb" or presentation component. It has only Input properties and no internal logic.
-* 
+
+
 ```TypeScript
 import {Person} from "../person";
 import IHttpService = angular.IHttpService;
@@ -74,3 +75,8 @@ export class TypescriptService  {
 export const typescriptServiceModule = angular.module('typeScriptService_module', [])
 	.service('typescriptService', TypescriptService);
 ```
+
+* The data service returns a promise of data.
+* Extracting data from the response and error handling can be easily done with interceptors.
+* Injected angular dependencies get Injected via constructor and are typed. 
+* Besides typings - this service is plain ES6.
