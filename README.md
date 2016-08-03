@@ -17,3 +17,4 @@ const modules = [
 angular
     .module('typescript-app', modules.map(module => module.name));
 ```
+* In order to stick to angulars module approach, it is considered a best practice to use on module per file and therefore also per angular service, controller or component.
