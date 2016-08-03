@@ -51,12 +51,13 @@ export const typescriptComponentModule = angular.module('typescriptComponentModu
 ```TypeScript
 import {Person} from "../person";
 import IHttpService = angular.IHttpService;
+import IQService = angular.IQService;
 import IPromise = angular.IPromise;
 import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
 
 export class TypescriptService  {
 
-	constructor(private $http: IHttpService, private $q: angular.IQService) {
+	constructor(private $http: IHttpService, private $q: IQService) {
 	}
 
 	getPeople(): IPromise<Person[]> {
