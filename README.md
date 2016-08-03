@@ -81,3 +81,36 @@ export const typescriptServiceModule = angular.module('typeScriptService_module'
 * Extracting data from the response and error handling can be easily done with interceptors.
 * Injected angular dependencies get Injected via constructor and are typed. 
 * Besides typings - this service is plain ES6.
+
+### Controller example
+```TypeScript
+import {Person} from "../person";
+import {TypescriptService} from "./typescript-service";
+
+class TypescriptController {
+
+    serviceText:string = '';
+    people:Person[] = [];
+
+    constructor(private typescriptService:TypescriptService) {
+    }
+
+    $onInit() {
+        this.serviceText = this.typescriptService.getValue();
+        this.typescriptService.getPersonsFromRestService().then(people => {
+            this.people = people;
+            }
+        )
+    }
+
+    addPerson() {
+        this.people.push({
+            firstName: 'First Name',
+            lastName: 'Last Name'
+        })
+    }
+}
+
+export const typescriptControllerModule = angular.module('typescriptControllerModule', [])
+    .controller('typescriptController', TypescriptController);
+```
