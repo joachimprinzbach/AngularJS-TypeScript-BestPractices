@@ -31,6 +31,10 @@ angular
 ```TypeScript
 import {Person} from "../person";
 
+class TypescriptComponentController {
+    people: Person[];
+}
+
 const typescriptComponent = {
     bindings: {
         people: '<',
@@ -44,10 +48,6 @@ const typescriptComponent = {
         `,
     controllerAs: 'vm',
     controller: TypescriptComponentController
-}
-
-class TypescriptComponentController {
-    people: Person[];
 }
 
 export const typescriptComponentModule = angular.module('typescriptComponentModule', [])
