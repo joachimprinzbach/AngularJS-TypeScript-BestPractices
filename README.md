@@ -96,14 +96,12 @@ import {TypescriptService} from "./typescript-service";
 
 class TypescriptController {
 
-    serviceText:string = '';
     people:Person[] = [];
 
     constructor(private typescriptService:TypescriptService) {
     }
 
     $onInit() {
-        this.serviceText = this.typescriptService.getValue();
         this.typescriptService.getPeople().then(people => {
             this.people = people;
             }
