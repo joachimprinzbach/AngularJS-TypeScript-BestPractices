@@ -3,6 +3,7 @@
  
 ## Introduction 
  Most examples found throughout the web that use AngularJS with TypeScript are not following common Software Engineering practices. 
+ Code is hard to understand and very complex, often is another layer built around the framework.
  These small snippets should show how an AngularJS 1.5 application can use TypeScript very easily and still stick to the ES6 standard. Typescript is only used for typings, no inheritance, interfaces and other boilerplate code is needed.
  
 ## Code Snippets 
