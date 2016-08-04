@@ -137,7 +137,7 @@ export const typescriptControllerModule = angular.module('typescriptControllerMo
 </div>
 ```
 
-### Using a Interceptor: 
+### Using an Interceptor: 
 ```TypeScript
 // Interceptor
 import IQService = angular.IQService;
@@ -203,3 +203,6 @@ angular
     }]);
 
 ```
+* Interceptor reduces the amount of code needed in services and also reduces duplication
+* It is, however, kind of magic - as it is neither explicit nor clear why the get request does return a Promise<T> instead of a Promise<IHttpPromiseCallbackArg<T>>
+* There is also a bit of dirty static instance code needed in order to access this correctly. (this itself is undefined)
