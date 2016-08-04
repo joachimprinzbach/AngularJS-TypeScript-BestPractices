@@ -136,3 +136,70 @@ export const typescriptControllerModule = angular.module('typescriptControllerMo
 	</div>
 </div>
 ```
+
+### Using a Interceptor: 
+```TypeScript
+// Interceptor
+import IQService = angular.IQService;
+
+export class ResponseInterceptor {
+
+    private static instance: ResponseInterceptor;
+
+    public static Factory($q: IQService) {
+        ResponseInterceptor.instance =  new ResponseInterceptor($q);
+        return ResponseInterceptor.instance;
+    }
+
+    constructor(private $q: IQService) {
+    }
+
+    public response(response) {
+        return ResponseInterceptor.instance.$q.resolve(response.data);
+    }
+
+    public responseError(error) {
+        return ResponseInterceptor.instance.$q.reject(error);
+    }
+}
+
+// Service
+import {Person} from "../person";
+import IHttpService = angular.IHttpService;
+import IQService = angular.IQService;
+import IPromise = angular.IPromise;
+import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
+
+export class TypescriptService  {
+
+	constructor(private $http: IHttpService, private $q: IQService) {
+	}
+
+	getPeople(): IPromise<Person[]> {
+		return this.$http.get('./rest/styleguide');
+	}
+}
+
+export const typescriptServiceModule = angular.module('typeScriptService_module', [])
+	.service('typescriptService', TypescriptService);
+	
+// Intercepter Registration in app module
+import {typescriptControllerModule} from "./typescript-controller";
+import {typescriptServiceModule} from "./typescript-service";
+import {typescriptComponentModule} from "./typescript-component";
+import {ResponseInterceptor} from "./response-interceptor";
+import IHttpProvider = angular.IHttpProvider;
+
+const modules = [
+    typescriptServiceModule,
+    typescriptControllerModule,
+    typescriptComponentModule
+];
+
+angular
+    .module('typescript-app', modules.map(module => module.name))
+    .config(['$httpProvider', ($httpProvider: IHttpProvider) => {
+        $httpProvider.interceptors.push(ResponseInterceptor.Factory);
+    }]);
+
+```
