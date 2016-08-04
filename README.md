@@ -104,7 +104,7 @@ class TypescriptController {
 
     $onInit() {
         this.serviceText = this.typescriptService.getValue();
-        this.typescriptService.getPersonsFromRestService().then(people => {
+        this.typescriptService.getPeople().then(people => {
             this.people = people;
             }
         )
