@@ -70,13 +70,11 @@ export class TypescriptService  {
 	}
 
 	getPeople(): IPromise<Person[]> {
-		var deferred = this.$q.defer();
-		this.$http.get('./personresturl').then(response => {
-			deferred.resolve(response.data);
-		}, err => {
-			deferred.reject(err);
-		});
-		return deferred.promise;
+	        return this.$q(resolve => {
+	            this.$http.get('someUrl').then(response => {
+	                resolve(response.data);
+	            });
+	        });
 	}
 }
 
